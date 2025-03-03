@@ -1,0 +1,13 @@
+name: Jenkins SDK Notification
+
+on:
+  repository_dispatch:
+    types: [jenkins_sdk_notification]
+
+jobs:
+  log-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log SDK run status
+        run: |
+          echo "Jenkins SDK run status: ${{ github.event.client_payload.status }}"
